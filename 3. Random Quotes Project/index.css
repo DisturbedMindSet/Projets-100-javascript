@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    
+    max-width: 30rem;
+    
+   
+    display: flex;
+}
+
+#container{
+    
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border: 3px solid rgb(199, 199, 199);
+    /* max-height: 20rem; */
+    /* max-width: 30rem; */
+    width: 100%;
+    background-color: rgb(247, 243, 243);
+    
+    flex-direction: column
+    
+}
+button{
+    border: 3px groove rgb(108,165,230);
+    color: rgb(248, 248, 248);
+    background-color: rgb(100,182,172);
+    font-weight: bold;
+    padding: 5px 15px ;
+
+}
+
+#quote{
+    display: flex;
+    padding: 5px 40px;
+    font-weight: 600;
+    
+}
+
+
+
+
