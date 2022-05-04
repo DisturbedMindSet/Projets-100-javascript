@@ -11,12 +11,22 @@
 		const displayValue = display.value;
 		const { type } = key.dataset;
 		const { previousKeyType } = calculator.dataset;
+		const { previousKey } = calculator.dataset;
 
+		calculator.dataset.previousKeyType = type;
 		// is this is number key
 		if (type === "number") {
 			// type = equal depois do 1 calculo, portanto
-			if (displayValue === "0" || previousKeyType === "operator") {
+			// previousKeyType === "operator"
+			if (displayValue === "0") {
 				display.value = keyValue;
+				calculator.dataset.firstNumber = display.value;
+			} else if (previousKeyType === "operator") {
+				display.value = keyValue;
+				calculator.dataset.secondNumber = display.value;
+			} else if (previousKeyType === "number") {
+				display.value = displayValue + keyValue;
+				
 			} else {
 				display.value = displayValue + keyValue;
 			}
@@ -33,7 +43,6 @@
 
 			key.dataset.state = "selected";
 
-			calculator.dataset.firstNumber = displayValue;
 			calculator.dataset.operator = key.dataset.key;
 		}
 
@@ -45,16 +54,16 @@
 
 			var result = "";
 			if (operator === "minus") {
-				return firstNumber - secondNumber;
+				result = firstNumber - secondNumber;
 			}
 			if (operator === "times") {
-				return firstNumber * secondNumber;
+				result = firstNumber * secondNumber;
 			}
 			if (operator === "divide") {
-				return secondNumber / firstNumber;
+				result = secondNumber / firstNumber;
 			}
 			if (operator === "plus") {
-				return firstNumber + secondNumber;
+				result = firstNumber + secondNumber;
 			}
 
 			display.value = result;
@@ -66,13 +75,18 @@
 			delete calculator.dataset.operator;
 		}
 
-		calculator.dataset.previousKeyType = type;
+		// if ((display.value !== "0") & (type === "number")) {
+		// 	calculator.dataset.firstNumber = display.value;
+		// }
+		// if ((display.value !== "0") & (type === "operator")) {
+		// 	calculator.dataset.secondNumber = display.value;
+		// }
 	});
 })();
 
 // testing
 
-const one = document.querySelector();
+// const one = document.querySelector();
 
 //
 //  1 parte write solution
