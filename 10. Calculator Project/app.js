@@ -1,97 +1,80 @@
 (function () {
-    
-   
+	const calculator = document.querySelector(".calculator");
+	const keys = calculator.querySelector(".buttons");
+	const display = calculator.querySelector(".screen");
 
-    const calculator = document.querySelector(".calculator");
-    const keys = calculator.querySelector(".buttons");
-    const display = calculator.querySelector(".screen");
+	keys.addEventListener("click", event => {
+		if (!event.target.closest("button")) return;
 
+		const key = event.target;
+		const keyValue = key.textContent;
+		const displayValue = display.value;
+		const { type } = key.dataset;
+		const { previousKeyType } = calculator.dataset;
 
-    keys.addEventListener("click", (event) => {
-        if (!event.target.closest("button")) return;
+		// is this is number key
+		if (type === "number") {
+			// type = equal depois do 1 calculo, portanto
+			if (displayValue === "0" || previousKeyType === "operator") {
+				display.value = keyValue;
+			} else {
+				display.value = displayValue + keyValue;
+			}
+		}
+		// calculator.dataset.firstNumber = display.value;
+		// calculator.dataset.secondNumber = display.value;
 
-        const key = event.target;
-        const keyValue = key.textContent;
-        const displayValue = display.value;
-        const { type } = key.dataset;
-        const { previousKeyType } = calculator.dataset;
+		// is this operator key
+		if (type === "operator") {
+			const operatorKeys = keys.querySelectorAll("[data-type='operator']");
+			operatorKeys.forEach(el => {
+				el.dataset.state = "";
+			});
 
-        
-        // is this is number key
-        if (type === "number") {
-            // type = equal depois do 1 calculo, portanto
-            if (displayValue === "0" || previousKeyType === "operator"){
-                display.value = keyValue;
-            
-            } else {
-                display.value = displayValue + keyValue;
-            }
+			key.dataset.state = "selected";
 
-        }
-        // calculator.dataset.firstNumber = display.value;
-        // calculator.dataset.secondNumber = display.value;
+			calculator.dataset.firstNumber = displayValue;
+			calculator.dataset.operator = key.dataset.key;
+		}
 
+		if (type === "equal") {
+			// perform calculation
+			const firstNumber = parseInt(calculator.dataset.firstNumber);
+			const operator = calculator.dataset.operator;
+			const secondNumber = parseInt(calculator.dataset.secondNumber);
 
-        // is this operator key
-        if (type === "operator") {
+			var result = "";
+			if (operator === "minus") {
+				return firstNumber - secondNumber;
+			}
+			if (operator === "times") {
+				return firstNumber * secondNumber;
+			}
+			if (operator === "divide") {
+				return secondNumber / firstNumber;
+			}
+			if (operator === "plus") {
+				return firstNumber + secondNumber;
+			}
 
-            const operatorKeys = keys.querySelectorAll("[data-type='operator']");
-            operatorKeys.forEach(el => { el.dataset.state = "" });
+			display.value = result;
+		}
 
-            key.dataset.state = "selected";
+		if (type === "clear") {
+			displayValue = "0";
+			delete calculator.dataset.firstNumber;
+			delete calculator.dataset.operator;
+		}
 
-            calculator.dataset.firstNumber = displayValue;
-            calculator.dataset.operator = key.dataset.key;
-        }
-
-        if (type === "equal") {
-            // perform calculation
-            const firstNumber = parseInt(calculator.dataset.firstNumber);
-            const operator = calculator.dataset.operator;
-            const secondNumber = parseInt(calculator.dataset.secondNumber);
-
-            var result = "";
-            if (operator === "minus"){return  firstNumber - secondNumber}
-            if (operator === "times") {return firstNumber * secondNumber};
-            if (operator === "divide"){ return  secondNumber / firstNumber};
-            if (operator === "plus") {return  firstNumber + secondNumber};
-        
-            display.value = result
-            
-        }
-
-        if (type === "clear"){
-            displayValue= "0"
-            delete calculator.dataset.firstNumber
-            delete calculator.dataset.operator
-        }
-
-
-
-        calculator.dataset.previousKeyType = type;
-
-    });
-
-    
-    
+		calculator.dataset.previousKeyType = type;
+	});
 })();
-
 
 // testing
 
-const one = document.querySelector()
+const one = document.querySelector();
 
-
-
-
-
-
-
-
-
-
-
-// 
+//
 //  1 parte write solution
 // ~2 parte test solution - calc
 
@@ -105,10 +88,7 @@ const one = document.querySelector()
 //     if (operator === "divide") result = secondNumber / firstNumber;
 //     if (operator === "plus") result = firstNumber + secondNumber;
 //     return result;
-// }   
-
-
-
+// }
 
 // //Wrap code in an IIFEe
 // (function(){
