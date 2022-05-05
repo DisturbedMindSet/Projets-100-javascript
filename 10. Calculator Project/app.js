@@ -3,6 +3,7 @@
 	const keys = calculator.querySelector(".buttons");
 	const display = calculator.querySelector(".screen");
 
+	let waitingSecondNumber = false;
 	keys.addEventListener("click", event => {
 		if (!event.target.closest("button")) return;
 
@@ -14,22 +15,28 @@
 		const { previousKey } = calculator.dataset;
 
 		calculator.dataset.previousKeyType = type;
+
 		// is this is number key
 		if (type === "number") {
-			// type = equal depois do 1 calculo, portanto
-			// previousKeyType === "operator"
-			if (displayValue === "0") {
+			if (displayValue === "0" || previousKeyType === "operator") {
 				display.value = keyValue;
-				calculator.dataset.firstNumber = display.value;
-			} else if (previousKeyType === "operator") {
-				display.value = keyValue;
-				calculator.dataset.secondNumber = display.value;
-			} else if (previousKeyType === "number") {
-				display.value = displayValue + keyValue;
-				
 			} else {
-				display.value = displayValue + keyValue;
+				display.value = displayValue === "0" ? keyValue : displayValue + keyValue;
 			}
+
+			if (previousKeyType === "operator" && waitingSecondNumber === true) {
+				waitingSecondNumber = false;
+				calculator.dataset.secondNumber = display.value;
+			}
+
+			if (previousKeyType === "number" && !isNaN(displayValue)) {
+				calculator.dataset.firstNumber = display.value;
+				waitingSecondNumber = true;
+			}
+
+			// } else {
+			// 	display.value = displayValue === "0" ? keyValue : displayValue + keyValue;
+			// }
 		}
 		// calculator.dataset.firstNumber = display.value;
 		// calculator.dataset.secondNumber = display.value;
@@ -42,15 +49,21 @@
 			});
 
 			key.dataset.state = "selected";
-
+			waitingSecondNumber = true;
 			calculator.dataset.operator = key.dataset.key;
+		}
+
+		if (type === "decimal") {
+			if (!displayValue.includes(".")) {
+				display.value += ".";
+			}
 		}
 
 		if (type === "equal") {
 			// perform calculation
-			const firstNumber = parseInt(calculator.dataset.firstNumber);
+			const firstNumber = parseFloat(calculator.dataset.firstNumber);
 			const operator = calculator.dataset.operator;
-			const secondNumber = parseInt(calculator.dataset.secondNumber);
+			const secondNumber = parseFloat(calculator.dataset.secondNumber);
 
 			var result = "";
 			if (operator === "minus") {
@@ -70,11 +83,14 @@
 		}
 
 		if (type === "clear") {
-			displayValue = "0";
+			display.value = "0";
 			delete calculator.dataset.firstNumber;
 			delete calculator.dataset.operator;
 		}
 
+		// if (previousKeyType === "equal") {
+		// 	clear();
+		// }
 		// if ((display.value !== "0") & (type === "number")) {
 		// 	calculator.dataset.firstNumber = display.value;
 		// }
