@@ -29,9 +29,11 @@
 				calculator.dataset.secondNumber = display.value;
 			}
 
-			if (previousKeyType === "number" && !isNaN(displayValue)) {
-				calculator.dataset.firstNumber = display.value;
-				waitingSecondNumber = true;
+			if (type === "number" && !isNaN(displayValue)) {
+				if (previousKeyType !== "operator") {
+					calculator.dataset.firstNumber = display.value;
+					waitingSecondNumber = true;
+				}
 			}
 
 			// } else {
@@ -56,7 +58,11 @@
 		if (type === "decimal") {
 			if (!displayValue.includes(".")) {
 				display.value += ".";
+			} else if (previousKey === "operator") {
+				display.value = "0.";
 			}
+
+			calculator.dataset.operator = key.dataset.key;
 		}
 
 		if (type === "equal") {

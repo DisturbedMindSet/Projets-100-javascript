@@ -1,0 +1,262 @@
+@import url(https://fonts.google.com/specimen/Space+Mono);
+
+:root {
+	--font: 24px;
+	--font-family: "Space Mono", "Courier New", Courier, monospace;
+	--font-weight: 700;
+	--primary-color: hsl(172, 67%, 45%);
+	--color--white: #fff;
+
+	/* calculator */
+	--color-1: rgb(244, 250, 250);
+	/* input */
+	--color-2: rgb(197, 228, 231);
+	--color-neutral: rgb(127, 156, 159);
+	/* input text */
+
+	--color-6: rgb(94, 122, 125);
+	/* button tips, result */
+	--color-9: rgb(0, 73, 77);
+}
+
+.outline {
+	outline: 2px solid red;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	/* height: 100vh; */
+	min-width: 375px;
+	background: var(--color-2);
+	font-family: var(--font-family), "Courier New", Courier, monospace;
+}
+
+.logo {
+	text-align: center;
+	margin-top: 1.7rem;
+	margin-bottom: 2.3rem;
+}
+
+.tip-calculator {
+	background: var(--color--white);
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	border-radius: 1.4rem 1.4rem 0 0;
+	-webkit-border-radius: 1.4rem 1.4rem 0 0;
+	-moz-border-radius: 1.4rem 1.4rem 0 0;
+	-ms-border-radius: 1.4rem 1.4rem 0 0;
+	-o-border-radius: 1.4rem 1.4rem 0 0;
+}
+
+label {
+	font-family: var(--font-family);
+	color: var(--color-6);
+	margin-bottom: 0.3rem;
+}
+
+input {
+	border: none;
+	outline: none;
+	padding: 5px;
+	background-position: 17px 15px;
+	background-repeat: no-repeat;
+	background: var(--color-2);
+	text-align: right;
+	font-size: var(--font);
+	color: var(--color-9);
+	font-weight: var(--font-weight);
+}
+
+.input {
+	width: 100%;
+}
+.icon-dollar {
+	position: absolute;
+	top: 25%;
+	left: 3%;
+}
+
+.bill__input {
+	position: relative;
+	background: var(--color-2);
+	margin-top: 0.5rem;
+}
+
+.margin {
+	margin-bottom: 36px;
+}
+
+.tip {
+	margin-top: 0.7rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 9rem);
+	row-gap: 1rem;
+	-moz-column-gap: 1.125rem;
+	column-gap: 1.125rem;
+	margin-bottom: 2rem;
+}
+
+.tips {
+	background: var(--color-9);
+	color: var(--color--white);
+	height: 3rem;
+	font-weight: var(--font-weight);
+	font-size: var(--font);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+
+.active-tip {
+	color: var(--color-9);
+	background: var(--primary-color);
+	font-weight: bolder;
+}
+
+.tip__costum input {
+	width: 100%;
+	height: 100%;
+	text-align: right;
+}
+
+.number__people {
+	position: relative;
+	margin-bottom: 2.4rem;
+	margin-top: 0.5rem;
+	font-size: 20px;
+}
+
+.number__people img {
+	position: absolute;
+	top: 25%;
+	left: 3%;
+}
+
+.result {
+	background: var(--color-9);
+	font-weight: var(--font-weight);
+	font-size: 20px;
+	color: #fff;
+	padding: 2rem 1.5rem;
+	border-radius: 0.75rem;
+	-webkit-border-radius: 0.75rem;
+	-moz-border-radius: 0.75rem;
+	-ms-border-radius: 0.75rem;
+	-o-border-radius: 0.75rem;
+}
+
+.tip__amount {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+}
+
+.person {
+	color: var(--color-neutral);
+	font-size: 14px;
+}
+
+.amount {
+	font-size: 28px;
+	color: var(--primary-color);
+}
+
+.reset {
+	border: none;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--color-9);
+	width: 100%;
+	padding: 0.5rem 0;
+	background: var(--primary-color);
+	cursor: pointer;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+.text {
+	color: var(--color-6);
+	font-weight: var(--font-weight);
+}
+
+.error {
+	color: rgb(255, 0, 0);
+	display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+	body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	input {
+		width: 415px;
+		padding: 9px;
+	}
+
+	.tip-calculator {
+		width: 61.875rem;
+		flex-direction: row;
+		padding: 2.3rem;
+		height: 31.25rem;
+		border-radius: 1.4rem;
+		-webkit-border-radius: 1.4rem;
+		-moz-border-radius: 1.4rem;
+		-ms-border-radius: 1.4rem;
+		-o-border-radius: 1.4rem;
+	}
+	.operation {
+		margin: 1rem;
+		display: flex;
+		flex-direction: column;
+	}
+	.bill__input {
+		margin-bottom: 2rem;
+	}
+
+	.tip {
+		grid-template-columns: 8.5rem 8.5rem 8.5rem;
+		row-gap: 1.2em;
+		margin-bottom: 3.2rem;
+		-moz-column-gap: 1.0625rem;
+		column-gap: 1.0625rem;
+		flex-wrap: nowrap;
+	}
+	.tips {
+		height: 3.5rem;
+	}
+	.result {
+		margin-left: auto;
+		width: 25rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 3rem 2.375rem;
+	}
+	.amount {
+		font-size: 3rem;
+	}
+	.reset {
+		padding: 13px 0;
+		margin-top: auto;
+	}
+}
