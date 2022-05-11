@@ -1,4 +1,4 @@
-@import url(https://fonts.google.com/specimen/Space+Mono);
+/* @import url(https://fonts.google.com/specimen/Space+Mono); */
 
 :root {
 	--font: 24px;
@@ -86,6 +86,9 @@ input {
 	position: relative;
 	background: var(--color-2);
 	margin-top: 0.5rem;
+}
+.input {
+	cursor: pointer;
 }
 
 .margin {
@@ -231,6 +234,7 @@ input {
 	}
 	.bill__input {
 		margin-bottom: 2rem;
+		cursor: pointer;
 	}
 
 	.tip {

@@ -9,6 +9,7 @@
 
 		<title>Frontend Mentor | Tip calculator app</title>
 		<link rel="stylesheet" href="index.css" />
+		<link rel="stylesheet" href="https://fonts.google.com/specimen/Space+Mono" />
 		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
 	</head>
 	<body>
@@ -21,12 +22,12 @@
 					<input type="number" class="input" id="bill-input" />
 				</div>
 				<label class="margin text" for="">Select Tip %</label>
-				<div class="tip">
-					<button class="tips">5%</button>
-					<button class="tips">10%</button>
-					<button class="tips active-tip">15%</button>
-					<button class="tips">25%</button>
-					<button class="tips">50%</button>
+				<div class="tip" id="">
+					<button value="5" class="tips">5%</button>
+					<button value="10" class="tips">10%</button>
+					<button value="15" class="tips active-tip">15%</button>
+					<button value="25" class="tips">25%</button>
+					<button value="50" class="tips">50%</button>
 					<div class="tip__costum">
 						<input type="number" id="tip-costum" placeholder="Custom " />
 					</div>
@@ -50,10 +51,10 @@
 				</div>
 				<div class="tip__amount">
 					<div>
-						<p>Tip</p>
-						<p class="person">/ person Reset</p>
+						<p>Total</p>
+						<p class="person">/ person</p>
 					</div>
-					<div class="amount" id="tip-amount">32.79€</div>
+					<div class="amount" id="total-amount">32.79€</div>
 				</div>
 				<div>
 					<button class="reset">RESET</button>
