@@ -87,6 +87,10 @@ input {
 	background: var(--color-2);
 	margin-top: 0.5rem;
 }
+.bill__input input:focus {
+	border: 2px solid var(--primary-color);
+}
+
 .input {
 	cursor: pointer;
 }
@@ -132,6 +136,12 @@ input {
 	width: 100%;
 	height: 100%;
 	text-align: right;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.tip__costum input:focus {
+	border: 2px groove var(--primary-color);
 }
 
 .number__people {
@@ -145,6 +155,10 @@ input {
 	position: absolute;
 	top: 25%;
 	left: 3%;
+}
+.people {
+	display: flex;
+	justify-content: space-between;
 }
 
 .result {
@@ -194,6 +208,11 @@ input {
 	-o-border-radius: 5px;
 }
 
+.reset:hover {
+	background: var(--color-2);
+	color: var(--color-9);
+}
+
 .text {
 	color: var(--color-6);
 	font-weight: var(--font-weight);
@@ -202,6 +221,10 @@ input {
 .error {
 	color: rgb(255, 0, 0);
 	display: none;
+}
+
+.error__numberPeople {
+	display: flex;
 }
 
 @media only screen and (min-width: 1000px) {
