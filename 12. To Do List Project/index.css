@@ -1,3 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+.outline {
+	outline: 2px solid red;
+}
+
 * {
 	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "poppins", sans-serif;
+}
+
+body {
+	height: 100vh;
+	width: 100%;
+	background: linear-gradient(#68eacc 0%, #497be8 100%);
+}
+
+.wrapper {
+	margin: 200px auto;
+	max-width: 600px;
+	width: 100%;
+	padding: 1.5625rem;
+	background: #fff;
+	border-radius: 4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+header {
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.inputField {
+	display: flex;
+	width: 100%;
+	height: 8vh;
+	margin: 1.1rem 0;
+}
+
+.inputField__input {
+	width: 90%;
+	height: 100%;
+	font-size: 1.0625rem;
+	padding-left: 1rem;
+	border: 2px solid #ccc;
+	background: rgba(239, 239, 239, 0.44);
+
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+.inputField__btn {
+	width: 3.2rem;
+	height: 100%;
+	border: none;
+	outline: none;
+	background: #aaa8a8;
+	color: #fff;
+	font-size: 1.375rem;
+	cursor: pointer;
+	margin-left: 5px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+.todoList {
+}
+
+.todoList li {
+	list-style: none;
+
+	height: 8vh;
+	line-height: 60px;
+	position: relative;
+	background: #f2f2f2;
+	margin-bottom: 1rem;
+	padding: 0 15px;
+	justify-content: center;
+
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+.todoList li span {
+	position: absolute;
+	right: 0px;
+	width: 7rem;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 0 3px;
+	-webkit-border-radius: 0 3px;
+	-moz-border-radius: 0 3px;
+	-ms-border-radius: 0 3px;
+	-o-border-radius: 0 3px;
+}
+
+.todoList li span i {
+	font-size: 25px;
+	padding-right: 8px;
+}
+
+.check-color {
+	color: green;
+}
+
+.edit-color {
+	color: blue;
+}
+
+.delete-color {
+	color: red;
 }
