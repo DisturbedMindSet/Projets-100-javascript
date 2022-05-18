@@ -62,7 +62,7 @@ header {
 	height: 100%;
 	border: none;
 	outline: none;
-	background: #aaa8a8;
+	background: #0044ff;
 	color: #fff;
 	font-size: 1.375rem;
 	cursor: pointer;
@@ -72,16 +72,13 @@ header {
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
 	-o-border-radius: 3px;
-}
-.inputField__btn:hover {
-	background-color: #68eacc;
-}
-
-.inputField__btn:active {
-	background-color: #497be8;
+	opacity: 0.6;
+	pointer-events: none;
 }
 
 .todoList {
+	max-height: 250px;
+	overflow-y: auto;
 }
 
 .todoList li {
@@ -89,7 +86,7 @@ header {
 	height: 8vh;
 	line-height: 60px;
 	position: relative;
-	background: #f2f2f2;
+	background: rgb(242, 242, 242);
 	margin-bottom: 1rem;
 	padding: 0 15px;
 	justify-content: center;
@@ -170,11 +167,13 @@ s.todoList li span i:last-child {
 .footer__btn {
 	border: none;
 	outline: none;
-	background: rgb(3, 137, 1);
+	padding: 0.5rem;
+	background: rgb(12, 121, 0);
 	color: #f2f2f2;
 	font-size: 16px;
 	cursor: pointer;
-
+	opacity: 0.6;
+	pointer-events: none;
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -184,4 +183,15 @@ s.todoList li span i:last-child {
 
 .hidden {
 	display: none;
+}
+
+.btn-active {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.active-focus {
+	color: rgb(155, 0, 0);
+	border: 1px solid rgb(92, 153, 246);
+	background: #497be8;
 }
