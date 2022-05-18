@@ -73,13 +73,19 @@ header {
 	-ms-border-radius: 3px;
 	-o-border-radius: 3px;
 }
+.inputField__btn:hover {
+	background-color: #68eacc;
+}
+
+.inputField__btn:active {
+	background-color: #497be8;
+}
 
 .todoList {
 }
 
 .todoList li {
 	list-style: none;
-
 	height: 8vh;
 	line-height: 60px;
 	position: relative;
@@ -87,6 +93,7 @@ header {
 	margin-bottom: 1rem;
 	padding: 0 15px;
 	justify-content: center;
+	cursor: default;
 
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -98,29 +105,83 @@ header {
 .todoList li span {
 	position: absolute;
 	right: 0px;
-	width: 7rem;
+	width: 10rem;
+	height: 100%;
+	top: 0px;
 	text-align: center;
-	cursor: pointer;
-	border-radius: 0 3px;
-	-webkit-border-radius: 0 3px;
-	-moz-border-radius: 0 3px;
-	-ms-border-radius: 0 3px;
-	-o-border-radius: 0 3px;
+	overflow: hidden;
+	border-radius: 0 5px;
+	-webkit-border-radius: 0 5px;
+	-moz-border-radius: 0 5px;
+	-ms-border-radius: 0 5px;
+	-o-border-radius: 0 5px;
+}
+.todoList li:hover span {
+	display: inline;
 }
 
 .todoList li span i {
 	font-size: 25px;
-	padding-right: 8px;
+	margin-right: 15px;
+	position: relative;
+	padding: 5px;
+	top: 0px;
+	transition: all 200ms ease-in-out;
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-ms-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+}
+
+s.todoList li span i:last-child {
+	font-size: 25px;
+	padding-right: 0px;
+}
+
+.todoList li span i:hover {
+	top: -5px;
+}
+.todoList li span i:active {
+	top: 2px;
 }
 
 .check-color {
 	color: green;
+	cursor: pointer;
 }
 
 .edit-color {
 	color: blue;
+	cursor: pointer;
 }
 
 .delete-color {
 	color: red;
+	cursor: pointer;
+}
+
+.footer {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	margin-top: 1.25rem;
+}
+
+.footer__btn {
+	border: none;
+	outline: none;
+	background: rgb(3, 137, 1);
+	color: #f2f2f2;
+	font-size: 16px;
+	cursor: pointer;
+
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+.hidden {
+	display: none;
 }
