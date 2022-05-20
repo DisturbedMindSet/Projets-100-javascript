@@ -86,12 +86,12 @@ header {
 	height: 8vh;
 	line-height: 60px;
 	position: relative;
-	background: rgb(242, 242, 242);
+	background: rgb(179, 209, 209);
 	margin-bottom: 1rem;
 	padding: 0 15px;
 	justify-content: center;
 	cursor: default;
-
+	font-weight: 600;
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -191,7 +191,7 @@ s.todoList li span i:last-child {
 }
 
 .active-focus {
-	color: rgb(155, 0, 0);
-	border: 1px solid rgb(92, 153, 246);
-	background: #497be8;
+	color: rgb(199, 15, 15);
+	border: 2px solid rgb(92, 153, 246);
+	background: #1d65ff;
 }

@@ -46,7 +46,7 @@ function showTalks() {
 	}
 	let newLiTag = "";
 	listArr.forEach((element, index) => {
-		newLiTag += `<li class="item__icons"> ${element};
+		newLiTag += `<li class="item__icons"> ${element}
          <span  class=" hidden">
             <i onclick="EditTask(${index})" class="fa-solid fa-pen-to-square edit-color"></i>
             <i onclick="EditTask(${index})" class="fa-solid fa-check-circle check-color"></i>
@@ -91,6 +91,7 @@ function EditTask(index) {
 	textValue = listArr[index];
 
 	todoList.childNodes[index].classList.add("active-focus");
+	todoList.childNodes[index].focus();
 	console.log(todoList.childNodes[index]);
 	console.log(listArr);
 	// index.classList.add("active");
