@@ -4,10 +4,18 @@ const todoList = document.querySelector(".todoList");
 const pendingNumber = document.querySelector(".pendingNumb");
 const clearAll = document.querySelector(".footer__btn");
 
-input.addEventListener("input", e => {
-	let userData = input.value;
+let editId;
+let isEdited = false;
 
-	if (userData.trim() != 0) {
+input.addEventListener("input", e => {
+	let userData = input.value.trim();
+
+	if (e.target.value != null && e.target.value != "") {
+		if (!isEdited) {
+			// if (!listArr) {
+			// }
+			// listArr = JSON.parse(getLocalStorage);
+		}
 		addBtn.classList.add("btn-active");
 	} else {
 		addBtn.classList.remove("btn-active");
@@ -44,7 +52,19 @@ function showTalks() {
 	} else {
 		clearAll.classList.remove("btn-active");
 	}
+
+	if (!isEdited) {
+		// se for falso =
+		if (getLocalStorage == null) {
+			listArr = [];
+		}
+		listArr = JSON.parse(getLocalStorage);
+	} else {
+		isEdited = false;
+	}
+
 	let newLiTag = "";
+
 	listArr.forEach((element, index) => {
 		newLiTag += `<li class="item__icons"> ${element}
          <span  class=" hidden">
@@ -58,6 +78,19 @@ function showTalks() {
 	input.value = "";
 }
 
+function EditTask(taskId, taskName) {
+	// index = li number index
+	// let getLocalStorage = localStorage.getItem("New Todo");
+	// listArr = JSON.parse(getLocalStorage);
+	// textValue = listArr[index];
+
+	todoList.childNodes[index];
+	// editId = taskId;
+	// isEdited = true;
+	// input.value = taskName;
+}
+console.log(EditTask());
+
 function deleteTask(index) {
 	let getLocalStorage = localStorage.getItem("New Todo");
 	listArr = JSON.parse(getLocalStorage);
@@ -65,36 +98,6 @@ function deleteTask(index) {
 
 	localStorage.setItem("New Todo", JSON.stringify(listArr));
 	showTalks();
-}
-
-function saveTask(index) {
-	let getLocalStorage = localStorage.getItem("New Todo");
-	listArr = JSON.parse(getLocalStorage);
-	textValue = listArr[index];
-	// todoList.classList.add(li span)
-	console.log(textValue);
-	// listArr.classList.add("active-focus");
-
-	// if (listArr[index] !== input.value) {
-	// 	listArr[index] == input.value;
-	// }
-
-	// listArr.splice(listArr.indexOf(listArr[index].value), 1, "222");
-	// localStorage.setItem("New Todo", JSON.stringify(listArr));
-	// showTalks();
-}
-
-function EditTask(index) {
-	// index = li number index
-	let getLocalStorage = localStorage.getItem("New Todo");
-	listArr = JSON.parse(getLocalStorage);
-	textValue = listArr[index];
-
-	todoList.childNodes[index].classList.add("active-focus");
-	todoList.childNodes[index].focus();
-	console.log(todoList.childNodes[index]);
-	console.log(listArr);
-	// index.classList.add("active");
 }
 
 clearAll.addEventListener("click", () => {
