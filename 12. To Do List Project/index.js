@@ -7,34 +7,42 @@ const clearAll = document.querySelector(".footer__btn");
 let editId;
 let isEdited = false;
 
-input.addEventListener("input", e => {
+function inputData() {
 	let userData = input.value.trim();
 
-	if (e.target.value != null && e.target.value != "") {
-		if (!isEdited) {
-			// if (!listArr) {
-			// }
-			// listArr = JSON.parse(getLocalStorage);
-		}
+	if (userData != null && userData != "") {
 		addBtn.classList.add("btn-active");
 	} else {
 		addBtn.classList.remove("btn-active");
 	}
-});
+}
 
-addBtn.addEventListener("click", e => {
+function clickBTN() {
 	let userData = input.value;
 	let getLocalStorage = localStorage.getItem("New Todo");
-	if (getLocalStorage == null) {
-		listArr = [];
+
+	if (!isEdited) {
+		if (getLocalStorage == null) {
+			listArr = [];
+		} else {
+			listArr = JSON.parse(getLocalStorage);
+			listArr.push(userData);
+		}
 	} else {
-		listArr = JSON.parse(getLocalStorage);
+		listArr[editId] = input.value;
 	}
-	listArr.push(userData);
+
+	// listArr[editId].name = input.value;
+
 	localStorage.setItem("New Todo", JSON.stringify(listArr));
 	showTalks();
+
 	addBtn.classList.remove("btn-active");
-});
+}
+
+input.addEventListener("input", inputData);
+
+addBtn.addEventListener("click", clickBTN);
 
 function showTalks() {
 	let getLocalStorage = localStorage.getItem("New Todo");
@@ -53,14 +61,12 @@ function showTalks() {
 		clearAll.classList.remove("btn-active");
 	}
 
-	if (!isEdited) {
-		// se for falso =
-		if (getLocalStorage == null) {
-			listArr = [];
-		}
-		listArr = JSON.parse(getLocalStorage);
-	} else {
-		isEdited = false;
+	if (isEdited) {
+		// listArr[index]=
+		// taskName = todoList.childNodes[editId].textContent;
+		// taskName.trim();
+		// listArr.push(taskName);
+		// listArr = linha
 	}
 
 	let newLiTag = "";
@@ -69,7 +75,7 @@ function showTalks() {
 		newLiTag += `<li class="item__icons"> ${element}
          <span  class=" hidden">
             <i onclick="EditTask(${index})" class="fa-solid fa-pen-to-square edit-color"></i>
-            <i onclick="EditTask(${index})" class="fa-solid fa-check-circle check-color"></i>
+            <i onclick="checkList(${index})" class="fa-solid fa-check-circle check-color"></i>
             <i onclick="deleteTask(${index})" class="fa fas-solid fa-circle-xmark delete-color"></i>
          </span>
       </li>`;
@@ -78,18 +84,24 @@ function showTalks() {
 	input.value = "";
 }
 
-function EditTask(taskId, taskName) {
+function EditTask(index) {
 	// index = li number index
 	// let getLocalStorage = localStorage.getItem("New Todo");
-	// listArr = JSON.parse(getLocalStorage);
+	// listArr = JSON.parses(getLocalStorage);
 	// textValue = listArr[index];
+	editId = index;
 
-	todoList.childNodes[index];
-	// editId = taskId;
-	// isEdited = true;
+	Value = listArr[index];
+	isEdited = true;
+	input.value = Value;
+
+	inputData();
 	// input.value = taskName;
 }
-console.log(EditTask());
+
+function checkList(index) {
+	console.log("entrei");
+}
 
 function deleteTask(index) {
 	let getLocalStorage = localStorage.getItem("New Todo");
