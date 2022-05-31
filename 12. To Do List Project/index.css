@@ -101,6 +101,7 @@ header {
 
 .todoList li span {
 	position: absolute;
+
 	right: 0px;
 	width: 10rem;
 	height: 100%;
@@ -194,4 +195,10 @@ s.todoList li span i:last-child {
 	color: rgb(199, 15, 15);
 	border: 2px solid rgb(92, 153, 246);
 	background: #1d65ff;
+}
+
+.active-check {
+	text-decoration: line-through;
+	color: #fafafa;
+	background-color: #ffa743 !important;
 }

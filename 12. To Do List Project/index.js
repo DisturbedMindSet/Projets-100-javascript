@@ -5,7 +5,9 @@ const pendingNumber = document.querySelector(".pendingNumb");
 const clearAll = document.querySelector(".footer__btn");
 
 let editId;
+var checkId = [];
 let isEdited = false;
+let checkLi = false;
 
 function inputData() {
 	let userData = input.value.trim();
@@ -61,14 +63,6 @@ function showTalks() {
 		clearAll.classList.remove("btn-active");
 	}
 
-	if (isEdited) {
-		// listArr[index]=
-		// taskName = todoList.childNodes[editId].textContent;
-		// taskName.trim();
-		// listArr.push(taskName);
-		// listArr = linha
-	}
-
 	let newLiTag = "";
 
 	listArr.forEach((element, index) => {
@@ -78,17 +72,21 @@ function showTalks() {
             <i onclick="checkList(${index})" class="fa-solid fa-check-circle check-color"></i>
             <i onclick="deleteTask(${index})" class="fa fas-solid fa-circle-xmark delete-color"></i>
          </span>
-      </li>`;
+      	</li>`;
 	});
 	todoList.innerHTML = newLiTag;
+
+	if (checkLi) {
+		console.log("deu");
+		checkId.forEach(element => {
+			todoList.childNodes[element].classList.add("active-check");
+		});
+	}
+
 	input.value = "";
 }
 
 function EditTask(index) {
-	// index = li number index
-	// let getLocalStorage = localStorage.getItem("New Todo");
-	// listArr = JSON.parses(getLocalStorage);
-	// textValue = listArr[index];
 	editId = index;
 
 	Value = listArr[index];
@@ -100,7 +98,18 @@ function EditTask(index) {
 }
 
 function checkList(index) {
-	console.log("entrei");
+	checkLi = true;
+	checkId.push(index);
+	console.log(checkId);
+	showTalks();
+
+	// if (checkLi) {
+	// 	todoList.childNodes[index].classList.add("active-check");
+
+	// 	console.log(todoList.childNodes[index]);
+	// } else {
+	// 	todoList.childNodes[index].classList.remove("active-check");
+	// }
 }
 
 function deleteTask(index) {
